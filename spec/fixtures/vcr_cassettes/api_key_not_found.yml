@@ -20,9 +20,9 @@ http_interactions:
       Content-Type:
       - application/json
       Authorization:
-      - IYZWS x:80cG99l/z3Wvt6Mfb4VbISPAYyM=
+      - IYZWS x:zIhII19vllO62jDpOEi5uOS4AXo=
       X-Iyzi-Rnd:
-      - H1xgne_b
+      - random_string
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -39,7 +39,7 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Wed, 13 Apr 2016 23:12:56 GMT
+      - Thu, 14 Apr 2016 08:50:51 GMT
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -48,5 +48,5 @@ http_interactions:
         OiJ0ciIsInN5c3RlbVRpbWUiOjE0NjA1ODkxNzY4MTUsImNvbnZlcnNhdGlv
         bklkIjoiMTIzNDU2In0=
     http_version: 
-  recorded_at: Wed, 13 Apr 2016 23:12:56 GMT
+  recorded_at: Thu, 14 Apr 2016 08:50:51 GMT
 recorded_with: VCR 3.0.1

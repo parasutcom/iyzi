@@ -13,9 +13,12 @@ Dir["#{RSPEC_ROOT}/support/**/*.rb"].each { |f| require f }
 
 VCR.configure do |c|
   c.cassette_library_dir = "#{RSPEC_ROOT}/fixtures/vcr_cassettes"
+  c.default_cassette_options = { :match_requests_on => [:method, :uri, :headers, :body, :query, :body_as_json] }
   c.hook_into :webmock
+  c.allow_http_connections_when_no_cassette = false
 end
 
 RSpec.configure do |config|
+  config.include BaseHelper
   config.extend CassetteHelper
 end

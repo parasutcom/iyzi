@@ -5,6 +5,8 @@ describe Iyzi::Requests::CheckoutFormAuth do
   let(:options) { { 'locale' => 'tr', 'conversationId' => '123456', 'token' => token } }
   let(:token) { '87ed39e6-a125-46ff-81c0-XXXX' }
 
+  before { stub_random_string }
+
   describe '#to_pki' do
     let(:form_request) { described_class.new(options) }
     let(:token) { 'TOKEN' }

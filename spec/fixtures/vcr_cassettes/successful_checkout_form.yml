@@ -20,9 +20,9 @@ http_interactions:
       Content-Type:
       - application/json
       Authorization:
-      - IYZWS x:u2raopzLKJJOvIsxFIL+I9VYX8s=
+      - IYZWS x:zIhII19vllO62jDpOEi5uOS4AXo=
       X-Iyzi-Rnd:
-      - PfdtLF8M
+      - random_string
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -39,7 +39,7 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Wed, 13 Apr 2016 23:00:11 GMT
+      - Thu, 14 Apr 2016 08:47:30 GMT
     body:
       encoding: UTF-8
       string: '{"status":"success","locale":"tr","systemTime":1460588522560,"conversationId":"123456","token":"692bc83c","checkoutFormContent":"<script
@@ -47,5 +47,5 @@ http_interactions:
         \ncreateTag:function(){\nvar iyziCSSTag = document.createElement(''link'');\niyziCSSTag.setAttribute(''rel'',''stylesheet'');\niyziCSSTag.setAttribute(''type'',''text/css'');\niyziCSSTag.setAttribute(''href'',''https://static.iyzipay.com/checkoutform/css/main.min.css'');\ndocument.head.appendChild(iyziCSSTag);\nvar
         iyziJSTag = document.createElement(''script'');\niyziJSTag.setAttribute(''src'',''https://static.iyzipay.com/checkoutform/js/iyziCheckout.min.js'');\ndocument.head.appendChild(iyziJSTag);\n}\n}\niyziInit.createTag();\n</script>\n","tokenExpireTime":1800,"paymentPageUrl":"https://cpp.iyzipay.com?token=692bc83c"}'
     http_version: 
-  recorded_at: Wed, 13 Apr 2016 23:00:11 GMT
+  recorded_at: Thu, 14 Apr 2016 08:47:31 GMT
 recorded_with: VCR 3.0.1

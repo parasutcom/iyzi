@@ -2,8 +2,9 @@ require 'spec_helper'
 
 describe Iyzi::Requests::CheckoutForm do
   include CheckoutFormHelper
-  let(:config) { Iyzi::Configuration.new(api_key: 'x', secret: 'x') }
+  before { stub_random_string }
 
+  let(:config) { Iyzi::Configuration.new(api_key: 'x', secret: 'x') }
   let(:options) do
     {
       'locale'         => 'tr',
@@ -113,13 +114,17 @@ describe Iyzi::Requests::CheckoutForm do
           expect(response['conversationId']).to eq(options['conversationId'])
         end
       end
+
       context 'invalid signature' do
         cassette 'checkout_form_invalid_signature'
         let(:form_request) { described_class.new(options.merge(config: config)) }
 
+        before do
+          allow_any_instance_of(described_class).to receive(:to_pki).and_return('invalid')
+        end
+
         it 'returns error' do
           response = form_request.response
-          allow_any_instance_of(described_class).to receive(:to_pki).and_return('invalid')
           expect(response['status']).to eq('failure')
           expect(response['errorCode']).to eq('1000')
           expect(response['errorMessage']).to eq('Geçersiz imza')
