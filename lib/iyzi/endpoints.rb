@@ -13,6 +13,9 @@ module Iyzi
     CARD_STORAGE_DELETE      = '/cardstorage/card'.freeze
     CARD_STORAGE_LIST        = '/cardstorage/cards'.freeze
 
+    # PAYMENT AUTH
+    PAYMENT_AUTH_CREATE      = '/payment/iyzipos/auth/ecom'.freeze
+
     # HTTP VERBS
     HTTP_POST    = 'post'.freeze
     HTTP_GET     = 'get'.freeze

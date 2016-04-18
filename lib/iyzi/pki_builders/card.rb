@@ -6,7 +6,11 @@ module Iyzi
         cardNumber
         expireYear
         expireMonth
+        cvc
+        registerCard
         cardHolderName
+        cardToken
+        cardUserKey
       }.freeze
 
       TYPE_CAST = {
