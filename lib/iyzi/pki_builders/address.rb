@@ -15,15 +15,7 @@ module Iyzi
 
       def initialize(values = {})
         super({})
-        return if values.nil?
-        assign_params_by_order(values)
-      end
-
-      def assign_params_by_order(values)
-        # there is a specific order that pki builder must obey
-        ADDRESS_ATTRIBUTES_ORDER.each do |attribute|
-          send(adder(attribute), attribute, values[attribute])
-        end
+        Assigner.assign_params_by_order(self, ADDRESS_ATTRIBUTES_ORDER, values)
       end
 
       def type_cast_hash

@@ -8,11 +8,10 @@ describe Iyzi::Requests::ApiTest do
     let(:api_test) { described_class.new(config: config) }
 
     it 'gets api status' do
-      expect(api_test.response).to eq({
-        'status'     => 'success',
-        'locale'     => 'tr',
-        'systemTime' => 1460586307051
-      })
+      response = api_test.response
+      expect(response['status']).to eq('success')
+      expect(response['locale']).to eq('tr')
+      expect(response['system_time']).to eq(1460586307051)
     end
   end
 

@@ -25,14 +25,14 @@ describe Iyzi::Requests::CheckoutFormAuth do
         response = auth_request.response
         expect(response['status']).to eq('success')
         expect(response['locale']).to eq(options['locale'])
-        expect(response['conversationId']).to eq(options['conversationId'])
+        expect(response['conversation_id']).to eq(options['conversationId'])
         expect(response['price']).to eq(1)
-        expect(response['paidPrice']).to eq(1)
-        expect(response['paymentId']).not_to be_nil
-        expect(response['fraudStatus']).not_to be_nil
-        expect(response['itemTransactions']).to be_kind_of(Array)
+        expect(response['paid_price']).to eq(1)
+        expect(response['payment_id']).not_to be_nil
+        expect(response['fraud_status']).not_to be_nil
+        expect(response['item_transactions']).to be_kind_of(Array)
         expect(response['token']).to eq(token)
-        expect(response['paymentStatus']).to eq('SUCCESS')
+        expect(response['payment_status']).to eq('SUCCESS')
       end
     end
 

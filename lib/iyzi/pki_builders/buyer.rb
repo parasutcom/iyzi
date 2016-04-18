@@ -25,10 +25,7 @@ module Iyzi
 
       def initialize(values = {})
         super({})
-        # there is a specific order that pki builder must obey
-        BUYER_ATTRIBUTES_ORDER.each do |attribute|
-          send(adder(attribute), attribute, values[attribute])
-        end
+        Assigner.assign_params_by_order(self, BUYER_ATTRIBUTES_ORDER, values)
       end
 
       def type_cast_hash

@@ -23,27 +23,31 @@ module Iyzi
       @random_string   = secure_random_string
     end
 
+    def iyzi_options
+      Utils.hash_to_properties(options)
+    end
+
     def connection
       @conn ||= Faraday.new(url: config.base_url) do |faraday|
         faraday.request  :json
-        # faraday.response :logger                  # log requests to STDOUT
+        faraday.response :logger                  # log requests to STDOUT
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
         faraday.response :json, content_type: /\bjson$/
       end
     end
 
     def call
-      @conn ||= connection.send(method) do |req|
+      connection.send(method) do |req|
         req.url path
         req.headers['Accept'] = 'application/json'
         req.headers['Content-Type'] = 'application/json'
         req.headers.merge!(auth_headers) if has_pki?
-        req.body = options
+        req.body = iyzi_options
       end
     end
 
     def response
-      @response ||= call.body
+      @response ||= Utils.properties_to_hash(call.body)
     end
 
     def auth_headers

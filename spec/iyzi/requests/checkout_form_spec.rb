@@ -78,9 +78,9 @@ describe Iyzi::Requests::CheckoutForm do
         response = form_request.response
         expect(response['status']).to eq('success')
         expect(response['locale']).to eq(options['locale'])
-        expect(response['conversationId']).to eq(options['conversationId'])
-        expect(response['checkoutFormContent']).not_to be_nil
-        expect(response['paymentPageUrl']).not_to be_nil
+        expect(response['conversation_id']).to eq(options['conversationId'])
+        expect(response['checkout_form_content']).not_to be_nil
+        expect(response['payment_page_url']).not_to be_nil
       end
     end
 
@@ -92,10 +92,10 @@ describe Iyzi::Requests::CheckoutForm do
         it 'returns error' do
           response = form_request.response
           expect(response['status']).to eq('failure')
-          expect(response['errorCode']).to eq('1001')
-          expect(response['errorMessage']).to eq('api bilgileri bulunamadı')
+          expect(response['error_code']).to eq('1001')
+          expect(response['error_message']).to eq('api bilgileri bulunamadı')
           expect(response['locale']).to eq(options['locale'])
-          expect(response['conversationId']).to eq(options['conversationId'])
+          expect(response['conversation_id']).to eq(options['conversationId'])
         end
       end
 
@@ -108,10 +108,10 @@ describe Iyzi::Requests::CheckoutForm do
         it 'returns error' do
           response = form_request.response
           expect(response['status']).to eq('failure')
-          expect(response['errorCode']).to eq('5004')
-          expect(response['errorMessage']).to eq('price gönderilmesi zorunludur')
+          expect(response['error_code']).to eq('5004')
+          expect(response['error_message']).to eq('price gönderilmesi zorunludur')
           expect(response['locale']).to eq(options['locale'])
-          expect(response['conversationId']).to eq(options['conversationId'])
+          expect(response['conversation_id']).to eq(options['conversationId'])
         end
       end
 
@@ -126,10 +126,10 @@ describe Iyzi::Requests::CheckoutForm do
         it 'returns error' do
           response = form_request.response
           expect(response['status']).to eq('failure')
-          expect(response['errorCode']).to eq('1000')
-          expect(response['errorMessage']).to eq('Geçersiz imza')
+          expect(response['error_code']).to eq('1000')
+          expect(response['error_message']).to eq('Geçersiz imza')
           expect(response['locale']).to eq(options['locale'])
-          expect(response['conversationId']).to eq(options['conversationId'])
+          expect(response['conversation_id']).to eq(options['conversationId'])
         end
       end
     end

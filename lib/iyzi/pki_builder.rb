@@ -20,19 +20,27 @@ module Iyzi
     end
 
     def add_array(key, value)
-      add(key, "[#{value.join(', ')}]")
+      add(key, "[#{value.join(', ')}]") if value.present?
     end
 
     def add_date(key, value)
-      add(key, parse_date(value).strftime('%Y-%m-%d %H:%M:%S'))
+      add(key, parse_date(value).strftime('%Y-%m-%d %H:%M:%S')) if value.present?
+    end
+
+    def add_buyer(key, value)
+      add(key, PkiBuilders::Buyer.new(value).request_string)
+    end
+
+    def add_address(key, value)
+      add(key, PkiBuilders::Address.new(value).request_string)
+    end
+
+    def add_basket_items(key, value)
+      add_array(key, PkiBuilders::BasketItems.new(value).request_array)
     end
 
     def add(key, value)
       params[key] = value.to_s unless value.to_s.empty?
-    end
-
-    def adder(attribute)
-      type_cast_hash[attribute.to_sym] || type_cast_hash[:default]
     end
 
     def convert_str(key, value)
