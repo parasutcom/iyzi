@@ -15,6 +15,8 @@ require 'iyzi/pki_builders/buyer'
 require 'iyzi/pki_builders/checkout_form'
 require 'iyzi/pki_builders/checkout_form_auth'
 require 'iyzi/pki_builders/sub_merchant'
+require 'iyzi/pki_builders/card_storage'
+require 'iyzi/pki_builders/card'
 
 # Requests
 require 'iyzi/request'
@@ -22,6 +24,7 @@ require 'iyzi/requests/api_test'
 require 'iyzi/requests/checkout_form'
 require 'iyzi/requests/checkout_form_auth'
 require 'iyzi/requests/sub_merchant'
+require 'iyzi/requests/card_storage'
 
 # Misc
 require 'active_support/all'

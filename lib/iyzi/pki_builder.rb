@@ -39,6 +39,10 @@ module Iyzi
       add_array(key, PkiBuilders::BasketItems.new(value).request_array)
     end
 
+    def add_card(key, value)
+      add(key, PkiBuilders::Card.new(value).request_string)
+    end
+
     def add(key, value)
       params[key] = value.to_s unless value.to_s.empty?
     end
