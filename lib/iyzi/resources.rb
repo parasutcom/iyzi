@@ -11,5 +11,13 @@ module Iyzi
     def checkout_form_auth(options)
       Requests::CheckoutFormAuth.new(options)
     end
+
+    def payment_auth(options, &block)
+      Requests::PaymentAuth.new(options).response(&block)
+    end
+
+    def register_card(options, &block)
+      Requests::CardStorage.add(options).response(&block)
+    end
   end
 end

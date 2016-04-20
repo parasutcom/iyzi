@@ -1,20 +1,22 @@
 module Iyzi
   module PkiBuilders
-    class CardStorage < PkiBuilder
+    class PaymentCard < PkiBuilder
       ATTRIBUTES_ORDER = %w{
         locale
         conversationId
-        externalId
-        email
-        cardUserKey
+        cardHolderName
+        cardNumber
+        expireYear
+        expireMonth
+        cvc
+        registerCard
+        cardAlias
         cardToken
-        card
-      }.freeze
+        cardUserKey
+      }
 
       TYPE_CAST = {
-        default: 'add',
-        card:    'add_store_card'
-
+        default: 'add'
       }.freeze
 
       def initialize(values = {})

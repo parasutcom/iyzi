@@ -48,6 +48,7 @@ module Iyzi
 
     def response
       @response ||= Utils.properties_to_hash(call.body)
+      block_given? ? yield(@response) : @response
     end
 
     def auth_headers

@@ -22,7 +22,7 @@ module Iyzi
         default:         'add',
         price:           'add_price',
         paidPrice:       'add_price',
-        paymentCard:     'add_card',
+        paymentCard:     'add_payment_card',
         buyer:           'add_buyer',
         shippingAddress: 'add_address',
         billingAddress:  'add_address',

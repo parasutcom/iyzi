@@ -1,17 +1,15 @@
 module Iyzi
   module PkiBuilders
-    class Card < PkiBuilder
+    class StoreCard < PkiBuilder
       ATTRIBUTES_ORDER = %w{
+        locale
+        conversationId
         cardAlias
         cardNumber
         expireYear
         expireMonth
-        cvc
-        registerCard
         cardHolderName
-        cardToken
-        cardUserKey
-      }.freeze
+      }
 
       TYPE_CAST = {
         default: 'add'
