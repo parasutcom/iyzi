@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.iyzipay.com/payment/iyzipos/auth/ecom
+    body:
+      encoding: UTF-8
+      string: '{"locale":"tr","conversationId":"123456","price":1,"paidPrice":1,"basketId":"TEST_BASKET_ID","paymentGroup":"SUBSCRIPTION","paymentCard":{"cardToken":"TggW8eg3fDucmCxSkPqAloBsoVA=","cardUserKey":"hd5F9J+IE6BxZCoT9rctolTE9EI="},"buyer":{"id":"BY789","name":"Genc","surname":"Osman","identityNumber":"1000001","email":"genc@osman.com","registrationAddress":"Tomtom
+        Mah. Nur-i Ziya Sok. 16/1 34433 Beyoğlu","city":"Istanbul","country":"Turkey","ip":"localhost"},"billingAddress":{"address":"Tomtom
+        Mah. Nur-i Ziya Sok. 16/1 34433 Beyoğlu","contactName":"Genc Osman","city":"Istanbul","country":"Turkey"},"basketItems":[{"id":"PARASUT:1","name":"Test
+        Subscription","category1":"Finance","category2":"Online","itemType":"VIRTUAL","price":"1"}]}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Authorization:
+      - IYZWS x:LyP+38OXeKP9qQGtZwFKo9arzEQ=
+      X-Iyzi-Rnd:
+      - random_string
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Application-Context:
+      - iyzipay-payment-api:prod:8080
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Sun, 24 Apr 2016 17:36:38 GMT
+    body:
+      encoding: UTF-8
+      string: '{"status":"success","locale":"tr","systemTime":1461519398004,"conversationId":"123456","price":1,"paidPrice":1,"installment":1,"paymentId":"3410766","fraudStatus":1,"merchantCommissionRate":0E-8,"merchantCommissionRateAmount":0,"iyziCommissionRateAmount":0.02950000,"iyziCommissionFee":0.29500000,"cardType":"CREDIT_CARD","cardAssociation":"VISA","cardFamily":"Maximum","binNumber":"418342","basketId":"TEST_BASKET_ID","itemTransactions":[{"itemId":"PARASUT:1","paymentTransactionId":"2774801","transactionStatus":2,"price":1,"paidPrice":1.00000000,"merchantCommissionRate":0E-8,"merchantCommissionRateAmount":0E-8,"iyziCommissionRateAmount":0.02950000,"iyziCommissionFee":0.29500000,"blockageRate":0E-8,"blockageRateAmountMerchant":0E-8,"blockageRateAmountSubMerchant":0,"blockageResolvedDate":"2016-04-24
+        20:36:37","subMerchantPrice":0,"subMerchantPayoutRate":0E-8,"subMerchantPayoutAmount":0,"merchantPayoutAmount":0.67550000}]}'
+    http_version: 
+  recorded_at: Sun, 24 Apr 2016 17:36:38 GMT

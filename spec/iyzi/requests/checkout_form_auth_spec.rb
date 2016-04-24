@@ -15,7 +15,6 @@ describe Iyzi::Requests::CheckoutFormAuth do
     end
   end
 
-
   describe '#response' do
     context 'successful response' do
       cassette 'successful_checkout_form_auth'

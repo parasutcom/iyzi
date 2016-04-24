@@ -8,7 +8,7 @@ module Iyzi
       end
 
       def request_array
-        items.collect do |item|
+        (items || []).collect do |item|
           BasketItem.new(item).request_string
         end
       end
