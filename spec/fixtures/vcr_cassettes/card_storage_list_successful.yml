@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.iyzipay.com/cardstorage/cards
+    body:
+      encoding: UTF-8
+      string: '{"cardUserKey":"74mARIxf2Z31VnJsdd/AeTgYyAY="}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Authorization:
+      - IYZWS x:eEvUP2jIWX2qorQz0lRWuvLpfjU=
+      X-Iyzi-Rnd:
+      - random_string
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Application-Context:
+      - iyzipay-payment-api:prod:8080
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Sun, 24 Apr 2016 15:42:50 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJzdGF0dXMiOiJzdWNjZXNzIiwibG9jYWxlIjoidHIiLCJzeXN0ZW1UaW1l
+        IjoxNDYxNTEyNTcwODc4LCJjYXJkVXNlcktleSI6Ijc0bUFSSXhmMlozMVZu
+        SnNkZC9BZVRnWXlBWT0iLCJjYXJkRGV0YWlscyI6W3siY2FyZFRva2VuIjoi
+        MGg5L3AxdExrNWlUUWQzaXI4M0hJbHM0TUZRPSIsImNhcmRBbGlhcyI6InVz
+        ZWQgaW4gcGFyZGV2IiwiYmluTnVtYmVyIjoiNTUyODc5IiwiY2FyZFR5cGUi
+        OiJDUkVESVRfQ0FSRCIsImNhcmRBc3NvY2lhdGlvbiI6Ik1BU1RFUl9DQVJE
+        IiwiY2FyZEZhbWlseSI6IlBhcmFmIiwiY2FyZEJhbmtDb2RlIjoxMiwiY2Fy
+        ZEJhbmtOYW1lIjoiSGFsayBCYW5rYXPEsSJ9XX0=
+    http_version: 
+  recorded_at: Sun, 24 Apr 2016 15:42:50 GMT

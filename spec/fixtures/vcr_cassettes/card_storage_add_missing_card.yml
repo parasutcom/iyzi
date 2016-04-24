@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.iyzipay.com/cardstorage/card
+    body:
+      encoding: UTF-8
+      string: '{"email":"john@doe.com"}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Authorization:
+      - IYZWS x:Bqfjw+8eigYzfS/PH0KraAnrXe8=
+      X-Iyzi-Rnd:
+      - random_string
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Application-Context:
+      - iyzipay-payment-api:prod:8080
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Sun, 24 Apr 2016 14:36:39 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJzdGF0dXMiOiJmYWlsdXJlIiwiZXJyb3JDb2RlIjoiMzAwMyIsImVycm9y
+        TWVzc2FnZSI6ImNhcmQgYmlsZ2lzaSBnw7ZuZGVyaWxtZXNpIHpvcnVubHVk
+        dXIiLCJsb2NhbGUiOiJ0ciIsInN5c3RlbVRpbWUiOjE0NjE1MDg2MDAzNDUs
+        ImVtYWlsIjoiam9obkBkb2UuY29tIn0=
+    http_version: 
+  recorded_at: Sun, 24 Apr 2016 14:36:40 GMT

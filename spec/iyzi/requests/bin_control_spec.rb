@@ -1,18 +1,13 @@
 require 'spec_helper'
 
 describe Iyzi::Requests::BinControl do
-  before do
-    stub_random_string
-    Iyzi.configure do |config|
-      config.api_key = 'x'
-      config.secret = 'x'
-    end
-  end
+  let(:config) { Iyzi::Configuration.new(api_key: 'x', secret: 'x') }
+  before { stub_random_string }
 
   context 'succesful' do
     cassette 'bin_control_successful'
     let(:bin_number)  { '557023' }
-    let(:bin_control) { described_class.new(bin_number: bin_number) }
+    let(:bin_control) { described_class.new(bin_number: bin_number, config: config) }
 
     it 'gets bin number details' do
       response = bin_control.response
@@ -29,7 +24,7 @@ describe Iyzi::Requests::BinControl do
   context 'failure' do
     cassette 'bin_control_failure'
     let(:bin_number)  { '411111' }
-    let(:bin_control) { described_class.new(bin_number: bin_number) }
+    let(:bin_control) { described_class.new(bin_number: bin_number, config: config) }
 
     it 'gets not found response' do
       response = bin_control.response
