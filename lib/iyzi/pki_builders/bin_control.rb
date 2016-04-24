@@ -1,19 +1,14 @@
 module Iyzi
   module PkiBuilders
-    class CardStorage < PkiBuilder
+    class BinControl < PkiBuilder
       ATTRIBUTES_ORDER = %w{
         locale
         conversationId
-        externalId
-        email
-        cardUserKey
-        cardToken
-        card
-      }.freeze
+        binNumber
+      }
 
       TYPE_CAST = {
-        default: 'add',
-        card:    'add_store_card'
+        default: 'add'
       }.freeze
 
       def initialize(values = {})

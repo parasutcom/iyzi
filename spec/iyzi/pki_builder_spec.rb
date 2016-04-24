@@ -26,7 +26,7 @@ describe Iyzi::PkiBuilder do
   describe '#add_array' do
     let(:builder) { described_class.new }
     it 'adds array to params' do
-      builder.add_array('basketItems', [1,2,3,4,5])
+      builder.add_array('basketItems', [1, 2, 3, 4, 5])
       expect(builder.params['basketItems']).to eq('[1, 2, 3, 4, 5]')
     end
   end
@@ -35,9 +35,9 @@ describe Iyzi::PkiBuilder do
     let(:builder) { described_class.new }
 
     before do
-      builder.add('basketId', 123456)
+      builder.add('basketId', 123_456)
       builder.add_price('price', 12.3456)
-      builder.add_array('basketItems', [1,2,3,4,5])
+      builder.add_array('basketItems', [1, 2, 3, 4, 5])
     end
 
     it 'returns request_string' do

@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.iyzipay.com/payment/bin/check
+    body:
+      encoding: UTF-8
+      string: '{"binNumber":"411111"}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Authorization:
+      - IYZWS x:8AupEOf69oJhDcKVMPFv5mNd5kQ=
+      X-Iyzi-Rnd:
+      - random_string
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Application-Context:
+      - iyzipay-payment-api:prod:8080
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Sat, 23 Apr 2016 14:40:52 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJzdGF0dXMiOiJmYWlsdXJlIiwiZXJyb3JDb2RlIjoiNTA2NiIsImVycm9y
+        TWVzc2FnZSI6IkJpbiBidWx1bmFtYWTEsSIsImxvY2FsZSI6InRyIiwic3lz
+        dGVtVGltZSI6MTQ2MTQyMjQ1MjIzNiwiYmluTnVtYmVyIjoiNDExMTExIn0=
+    http_version: 
+  recorded_at: Sat, 23 Apr 2016 14:40:52 GMT

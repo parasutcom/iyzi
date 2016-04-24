@@ -19,5 +19,9 @@ module Iyzi
     def register_card(options, &block)
       Requests::CardStorage.add(options).response(&block)
     end
+
+    def bin_control(options, &block)
+      Requests::BinControl.new(options).response(&block)
+    end
   end
 end
