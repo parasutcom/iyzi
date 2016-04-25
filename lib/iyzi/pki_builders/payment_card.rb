@@ -15,17 +15,8 @@ module Iyzi
         cardUserKey
       }
 
-      TYPE_CAST = {
-        default: 'add'
-      }.freeze
-
       def initialize(values = {})
-        super({})
-        Assigner.assign_params_by_order(self, ATTRIBUTES_ORDER, values)
-      end
-
-      def type_cast_hash
-        TYPE_CAST
+        super(values, ATTRIBUTES_ORDER)
       end
     end
   end

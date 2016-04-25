@@ -19,7 +19,6 @@ module Iyzi
       }.freeze
 
       TYPE_CAST = {
-        default:         'add',
         price:           'add_price',
         paidPrice:       'add_price',
         paymentCard:     'add_payment_card',
@@ -30,12 +29,7 @@ module Iyzi
       }.freeze
 
       def initialize(values = {})
-        super({})
-        Assigner.assign_params_by_order(self, ATTRIBUTES_ORDER, values)
-      end
-
-      def type_cast_hash
-        TYPE_CAST
+        super(values, ATTRIBUTES_ORDER, TYPE_CAST)
       end
     end
   end

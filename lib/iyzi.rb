@@ -7,7 +7,6 @@ require 'iyzi/utils'
 
 # PKI Builders
 require 'iyzi/pki_builder'
-require 'iyzi/pki_builders/assigner'
 require 'iyzi/pki_builders/basket_item'
 require 'iyzi/pki_builders/basket_items'
 require 'iyzi/pki_builders/address'

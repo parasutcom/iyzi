@@ -1,7 +1,7 @@
 module Iyzi
   module PkiBuilders
     class Buyer < PkiBuilder
-      BUYER_ATTRIBUTES_ORDER = %w{
+      ATTRIBUTES_ORDER = %w{
         id
         name
         surname
@@ -17,19 +17,13 @@ module Iyzi
         ip
       }.freeze
 
-      BUYER_HASH_TYPE_CAST = {
-        default:          'add',
+      TYPE_CAST = {
         registrationDate: 'add_date',
         lastLoginDate:    'add_date'
       }.freeze
 
       def initialize(values = {})
-        super({})
-        Assigner.assign_params_by_order(self, BUYER_ATTRIBUTES_ORDER, values)
-      end
-
-      def type_cast_hash
-        BUYER_HASH_TYPE_CAST
+        super(values, ATTRIBUTES_ORDER, TYPE_CAST)
       end
     end
   end

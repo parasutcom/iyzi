@@ -42,17 +42,8 @@ module Iyzi
         subMerchantExternalId
       }
 
-      TYPE_CAST = {
-        default: 'add'
-      }.freeze
-
       def initialize(type, values = {})
-        super({})
-        Assigner.assign_params_by_order(self, order_for(type), values)
-      end
-
-      def type_cast_hash
-        TYPE_CAST
+        super(values, order_for(type))
       end
 
       def order_for(type)

@@ -3,10 +3,10 @@ require 'faraday_middleware'
 
 module Iyzi
   class Request
-    AUTHORIZATION_HEADER_NAME = 'Authorization'.freeze
-    RANDOM_HEADER_NAME = 'x-iyzi-rnd'.freeze
+    AUTHORIZATION_HEADER_NAME   = 'Authorization'.freeze
+    RANDOM_HEADER_NAME          = 'x-iyzi-rnd'.freeze
     AUTHORIZATION_HEADER_STRING = 'IYZWS %s:%s'.freeze
-    DEFAULT_LOCALE = 'tr'.freeze
+    DEFAULT_LOCALE              = 'tr'.freeze
 
     attr_accessor :config, :method, :path, :conversation_id, :locale, :random_string, :pki, :options
 
