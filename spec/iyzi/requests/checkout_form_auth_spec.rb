@@ -8,7 +8,7 @@ describe Iyzi::Requests::CheckoutFormAuth do
   before { stub_random_string }
 
   describe '#to_pki' do
-    let(:form_request) { described_class.new(options) }
+    let(:form_request) { described_class.new(options.merge(config: config)) }
     let(:token) { 'TOKEN' }
     it 'generates pki string' do
       expect(form_request.to_pki).to eq('[locale=tr,conversationId=123456,token=TOKEN]')

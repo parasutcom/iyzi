@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe Iyzi::Request do
+  before { stub_config }
+  let(:config) { Iyzi.configuration }
+
   describe '#initialize' do
     it 'initializes request object' do
       request = described_class.new('post', '/path/to/request', locale: 'en', conversation_id: '123')
@@ -12,8 +15,6 @@ describe Iyzi::Request do
   end
 
   describe '#connection' do
-    let(:config)  { Iyzi.configuration }
-
     let(:request) { described_class.new('post', '/path') }
     it 'returns connection' do
       connection = request.connection
@@ -23,7 +24,6 @@ describe Iyzi::Request do
   end
 
   describe '#headers' do
-    let(:config) { Iyzi::Configuration.new(api_key: 'IYZICO_API_KEY', secret: 'secret') }
     let(:digest) { 'BXwJ+miJyQ88NLQJB1/FzWZ6he8=' }
     let(:auth_header_string) { "IYZWS IYZICO_API_KEY:#{digest}" }
     let(:pki) { 'pki' }

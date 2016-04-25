@@ -21,6 +21,8 @@ module Iyzi
       @conversation_id = options[:conversation_id]
       @pki             = to_pki
       @random_string   = secure_random_string
+      # config must have all required params
+      config.validate
     end
 
     def iyzi_options

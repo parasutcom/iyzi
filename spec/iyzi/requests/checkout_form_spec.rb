@@ -52,7 +52,7 @@ describe Iyzi::Requests::CheckoutForm do
   let(:total_price) { items.collect { |a| a['price'].to_f }.inject(:+).to_s }
 
   describe '#to_pki' do
-    let(:form_request) { described_class.new(options) }
+    let(:form_request) { described_class.new(options.merge(config: config)) }
 
     it 'generates pki string' do
       expect(form_request.to_pki).to eq('[locale=tr,conversationId=123456,price=3.0,' \
