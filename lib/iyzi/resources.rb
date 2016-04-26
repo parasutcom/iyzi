@@ -1,15 +1,15 @@
 module Iyzi
   module Resources
     def api_test
-      Requests::ApiTest.new
+      Requests::ApiTest.new.response
     end
 
-    def checkout_form(options)
-      Requests::CheckoutForm.new(options)
+    def checkout_form(options, &block)
+      Requests::CheckoutForm.new(options).response(&block)
     end
 
-    def checkout_form_auth(options)
-      Requests::CheckoutFormAuth.new(options)
+    def checkout_form_auth(options, &block)
+      Requests::CheckoutFormAuth.new(options).response(&block)
     end
 
     def payment_auth(options, &block)
@@ -18,6 +18,14 @@ module Iyzi
 
     def register_card(options, &block)
       Requests::CardStorage.add(options).response(&block)
+    end
+
+    def list_cards(options, &block)
+      Requests::CardStorage.list(options).response(&block)
+    end
+
+    def delete_card(options, &block)
+      Requests::CardStorage.delete(options).response(&block)
     end
 
     def bin_control(options, &block)

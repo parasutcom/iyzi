@@ -22,7 +22,7 @@ module Iyzi
       @pki             = to_pki
       @random_string   = secure_random_string
       # config must have all required params
-      config.validate
+      config.validate if has_pki?
     end
 
     def iyzi_options

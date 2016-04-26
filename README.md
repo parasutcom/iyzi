@@ -2,6 +2,9 @@
 
 Iyzico ruby client
 
+Checkout api documentations
+https://www.iyzico.com/entegrasyon/ozel-yazilim-entegrasyonu/
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -18,9 +21,26 @@ Or install it yourself as:
 
     $ gem install iyzi
 
+## Setup
+
+Before using the library, you must supply your Iyzico API key and secret. There are two ways to configure. You can either put the code below into initializer:
+```ruby
+Iyzi.configure do |config|
+  config.api_key  = 'API_KEY'
+  config.secret   = 'SECRET'
+  config.base_url = 'BASE_API_URL' # default 'https://api.iyzipay.com/' if not specified
+end
+```
+or you could send configuration object as a parameter
+```ruby
+config = Iyzi::Configuration.new(api_key: 'API_KEY', secret: 'SECRET')
+params = { bin_number: '411111', config: config }
+Iyzi.bin_control(params)
+```
+
 ## Usage
 
-TODO: Write usage instructions here
+Checkout [examples](examples.md)
 
 ## Development
 

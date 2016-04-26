@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.email         = ["demirhanaydin@gmail.com"]
 
   spec.summary       = %q{Iyzico ruby client}
-  spec.description   = %q{Iyzico ruby client}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.description   = %q{Iyzico ruby client for api v1.0}
+  spec.homepage      = "https://github.com/parasutcom/iyzi"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
@@ -27,14 +27,14 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "faraday"
-  spec.add_dependency "faraday_middleware"
-  spec.add_dependency "activesupport"
+  spec.add_dependency "faraday", '~> 0.9.2'
+  spec.add_dependency "faraday_middleware", '~> 0.10.0'
+  spec.add_dependency "activesupport", '~> 4.2'
 
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "awesome_print"
+  spec.add_development_dependency "awesome_print", '~> 1.6'
   spec.add_development_dependency "webmock", "~> 1.2"
   spec.add_development_dependency "vcr", "~> 3.0"
 end

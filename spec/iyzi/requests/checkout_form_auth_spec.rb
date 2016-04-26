@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Iyzi::Requests::CheckoutFormAuth do
   let(:config) { Iyzi::Configuration.new(api_key: 'x', secret: 'x') }
-  let(:options) { { 'locale' => 'tr', 'conversationId' => '123456', 'token' => token } }
+  let(:options) { { locale: 'tr', conversation_id: '123456', token: token } }
   let(:token) { '87ed39e6-a125-46ff-81c0-XXXX' }
 
   before { stub_random_string }
@@ -23,8 +23,8 @@ describe Iyzi::Requests::CheckoutFormAuth do
       it 'returns payment status' do
         response = auth_request.response
         expect(response['status']).to eq('success')
-        expect(response['locale']).to eq(options['locale'])
-        expect(response['conversation_id']).to eq(options['conversationId'])
+        expect(response['locale']).to eq(options[:locale])
+        expect(response['conversation_id']).to eq(options[:conversation_id])
         expect(response['price']).to eq(1)
         expect(response['paid_price']).to eq(1)
         expect(response['payment_id']).not_to be_nil
