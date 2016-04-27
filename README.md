@@ -1,5 +1,7 @@
 # Iyzi
 
+[![Build Status](https://travis-ci.org/parasutcom/iyzi.svg?branch=master)](https://travis-ci.org/parasutcom/iyzi)
+
 Iyzico ruby client
 
 Checkout api documentations
