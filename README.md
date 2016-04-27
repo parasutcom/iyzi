@@ -42,6 +42,34 @@ Iyzi.bin_control(params)
 
 Checkout [examples](examples.md)
 
+## Supported Endpoints
+Checked items are supported
+
+- [x] Yeni Alt Üye İşyeri Ekleme Servisi /onboarding/submerchant POST
+- [x] Alt Üye İşyeri Güncelleme Servisi /onboarding/submerchant PUT
+- [ ] Ödeme (Auth) Servisi /payment/iyzipos/auth/ecom POST
+- [ ] 3D Secure Ödeme (initialize 3DS) Başlatma Servisi /payment/iyzipos/initialize3ds/ecom POST
+- [ ] 3D Secure Ödeme (Auth 3DS) Servisi /payment/iyzipos/auth3ds/ecom POST
+- [ ] Ön Otorizasyon (PreAuth) Servisi /payment/iyzipos/preauth/ecom POST
+- [ ] Son Otorizasyon (PostAuth=Capture) Servisi /payment/iyzipos/postauth POST
+- [ ] İptal (Cancel) Servisi /payment/iyzipos/cancel POST
+- [ ] İade (Refund) Servisi /payment/iyzipos/refund POST
+- [ ] İade (Refund) Servisi - İadeyi Üye İşyerinin Üstlendiği /payment/iyzipos/refund/merchant/charge POST
+- [ ] Para Transferi İçin Ürüne Onay Verme Servisi /payment/iyzipos/item/approve POST
+- [ ] Para Transferi İçin Ürüne Verilen Onayı Geri Çekme Servisi /payment/iyzipos/item/disapprove POST
+- [ ] Mahsuplaşma - Alt Üye İşyerine Para Gönderme Servisi /crossbooking/send POST
+- [ ] Mahsuplaşma - Alt Üye İşyerinden Para Alma Servisi /crossbooking/receive POST
+- [x] Servis Ayakta mı Testi (Healthcheck) /payment/test GET
+- [x] BIN Kontrol Servisi /payment/bin/check POST
+- [ ] Taksit Matrisi (Installment) Servisi /payment/iyzipos/installment POST
+- [x] Ödemeden Bağımsız Kart Ekleme Servisi /cardstorage/card POST
+- [x] Ödemeden Bağımsız Kart Silme Servisi /cardstorage/card DELETE
+- [x] Ödemeden Bağımsız Kart Bilgilerini Çekme Servisi /cardstorage/cards POST
+- [ ] Parası Transferi Yapılan İşlemler Servisi /reporting/settlement/payoutcompleted POST
+- [ ] Para Transferi Bankadan Geri Dönenler Servisi /reporting/settlement/bounced POST
+- [x] initializeCheckoutForm /payment/iyzipos/checkoutform/initialize/ecom POST
+- [x] Callback & getAuthResponse /payment/iyzipos/checkoutform/auth/ecom/detail POST
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
