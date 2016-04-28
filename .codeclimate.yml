@@ -6,3 +6,5 @@ engines:
       languages:
       - ruby
       - javascript
+exclude_paths:
+- spec/**/*
