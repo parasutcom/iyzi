@@ -1,3 +1,6 @@
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
+
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'iyzi'
 
@@ -16,6 +19,7 @@ VCR.configure do |c|
   c.default_cassette_options = { match_requests_on: [:method, :uri, :headers, :body, :query, :body_as_json] }
   c.hook_into :webmock
   c.allow_http_connections_when_no_cassette = false
+  c.ignore_hosts 'codeclimate.com'
 end
 
 RSpec.configure do |config|

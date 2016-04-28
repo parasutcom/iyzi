@@ -29,4 +29,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "awesome_print", '~> 1.6'
   spec.add_development_dependency "webmock", "~> 1.2"
   spec.add_development_dependency "vcr", "~> 3.0"
+  spec.add_development_dependency "codeclimate-test-reporter", "~> 0.5"
 end

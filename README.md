@@ -1,6 +1,8 @@
 # Iyzi
 
 [![Build Status](https://travis-ci.org/parasutcom/iyzi.svg?branch=master)](https://travis-ci.org/parasutcom/iyzi)
+[![Code Climate](https://codeclimate.com/github/parasutcom/iyzi/badges/gpa.svg)](https://codeclimate.com/github/parasutcom/iyzi)
+[![Test Coverage](https://codeclimate.com/github/parasutcom/iyzi/badges/coverage.svg)](https://codeclimate.com/github/parasutcom/iyzi/coverage)
 
 Iyzico ruby client
 
