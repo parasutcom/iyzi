@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.iyzipay.com/cardstorage/cards
+    uri: https://sandbox-api.iyzipay.com/cardstorage/cards
     body:
       encoding: UTF-8
-      string: '{"cardUserKey":"74mARIxf2Z31VnJsdd/AeTgYyAY="}'
+      string: '{"cardUserKey":"74mARIxf2Z31VnJsdd/AeTgYyAY=","locale":"tr"}'
     headers:
       User-Agent:
       - Faraday v0.9.2
@@ -14,7 +14,7 @@ http_interactions:
       Content-Type:
       - application/json
       Authorization:
-      - IYZWS x:eEvUP2jIWX2qorQz0lRWuvLpfjU=
+      - IYZWS sandbox-lYXmlBGjvZawww9mhoj7Mef89uZ1bybo:q8Dpet4t7GTRd4nrn8Ln8gJGNc4=
       X-Iyzi-Rnd:
       - random_string
       Accept-Encoding:
@@ -26,14 +26,24 @@ http_interactions:
     headers:
       Server:
       - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
       X-Application-Context:
-      - iyzipay-payment-api:prod:8080
+      - iyzipay-payment-api:sandbox:8080
       Content-Type:
       - application/json;charset=UTF-8
       Transfer-Encoding:
       - chunked
       Date:
-      - Sun, 24 Apr 2016 15:42:50 GMT
+      - Mon, 06 Jun 2016 12:52:18 GMT
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -46,4 +56,5 @@ http_interactions:
         IiwiY2FyZEZhbWlseSI6IlBhcmFmIiwiY2FyZEJhbmtDb2RlIjoxMiwiY2Fy
         ZEJhbmtOYW1lIjoiSGFsayBCYW5rYXPEsSJ9XX0=
     http_version: 
-  recorded_at: Sun, 24 Apr 2016 15:42:50 GMT
+  recorded_at: Mon, 06 Jun 2016 12:52:18 GMT
+recorded_with: VCR 3.0.1

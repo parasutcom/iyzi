@@ -3,8 +3,9 @@ require 'spec_helper'
 describe Iyzi::Requests::CheckoutForm do
   include CheckoutFormHelper
   before { stub_random_string }
-
-  let(:config) { Iyzi::Configuration.new(api_key: 'x', secret: 'x') }
+  let(:config) { Iyzi::Configuration.new(api_key:  ENV['IYZI_SANDBOX_API_KEY'],
+                                         secret:   ENV['IYZI_SANDBOX_SECRET'],
+                                         base_url: ENV['IYZI_SANDBOX_BASE_URL']) }
   let(:options) do
     {
       locale:          'tr',
@@ -71,22 +72,40 @@ describe Iyzi::Requests::CheckoutForm do
 
   describe '#response' do
     context 'successful response' do
-      let(:form_request) { described_class.new(options.merge(config: config)) }
-      cassette 'successful_checkout_form'
-
-      it 'returns success' do
-        response = form_request.response
+      def check_success(response, options)
         expect(response['status']).to eq('success')
         expect(response['locale']).to eq(options[:locale])
         expect(response['conversation_id']).to eq(options[:conversation_id])
         expect(response['checkout_form_content']).not_to be_nil
         expect(response['payment_page_url']).not_to be_nil
+        expect(response['currency']).to eq(options[:currency])
+      end
+
+      context 'currency is TRY' do
+        let(:form_request) { described_class.new(options.merge(config: config)) }
+        cassette 'checkout_form/successful'
+
+        it 'returns success' do
+          response = form_request.response
+          check_success(response, options)
+        end
+      end
+
+      context 'currency is USD' do
+        let(:form_request) { described_class.new(options.merge(config: config, currency: 'USD')) }
+        cassette 'checkout_form/successful_usd'
+
+        it 'returns success' do
+          response = form_request.response
+          check_success(response, options)
+        end
       end
     end
 
     context 'failed response' do
       context 'api_key not found' do
-        cassette 'api_key_not_found'
+        cassette 'checkout_form/api_key_not_found'
+        let(:config) { Iyzi::Configuration.new(api_key: 'x', secret: 'x') }
         let(:form_request) { described_class.new(options.merge(config: config)) }
 
         it 'returns error' do
@@ -100,7 +119,7 @@ describe Iyzi::Requests::CheckoutForm do
       end
 
       context 'missing attributes' do
-        cassette 'checkout_form_missing_attribute'
+        cassette 'checkout_form/missing_attribute'
         # price is a required field
         before { options.delete(:price) }
         let(:form_request) { described_class.new(options.merge(config: config)) }
@@ -116,7 +135,7 @@ describe Iyzi::Requests::CheckoutForm do
       end
 
       context 'invalid signature' do
-        cassette 'checkout_form_invalid_signature'
+        cassette 'checkout_form/invalid_signature'
         let(:form_request) { described_class.new(options.merge(config: config)) }
 
         before do

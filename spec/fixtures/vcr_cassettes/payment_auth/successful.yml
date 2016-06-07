@@ -29,6 +29,16 @@ http_interactions:
     headers:
       Server:
       - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
       X-Application-Context:
       - iyzipay-payment-api:prod:8080
       Content-Type:
@@ -36,10 +46,11 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Sun, 24 Apr 2016 17:36:38 GMT
+      - Mon, 06 Jun 2016 13:03:18 GMT
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"status":"success","locale":"tr","systemTime":1461519398004,"conversationId":"123456","price":1,"paidPrice":1,"installment":1,"paymentId":"3410766","fraudStatus":1,"merchantCommissionRate":0E-8,"merchantCommissionRateAmount":0,"iyziCommissionRateAmount":0.02950000,"iyziCommissionFee":0.29500000,"cardType":"CREDIT_CARD","cardAssociation":"VISA","cardFamily":"Maximum","binNumber":"418342","basketId":"TEST_BASKET_ID","itemTransactions":[{"itemId":"PARASUT:1","paymentTransactionId":"2774801","transactionStatus":2,"price":1,"paidPrice":1.00000000,"merchantCommissionRate":0E-8,"merchantCommissionRateAmount":0E-8,"iyziCommissionRateAmount":0.02950000,"iyziCommissionFee":0.29500000,"blockageRate":0E-8,"blockageRateAmountMerchant":0E-8,"blockageRateAmountSubMerchant":0,"blockageResolvedDate":"2016-04-24
         20:36:37","subMerchantPrice":0,"subMerchantPayoutRate":0E-8,"subMerchantPayoutAmount":0,"merchantPayoutAmount":0.67550000}]}'
     http_version: 
-  recorded_at: Sun, 24 Apr 2016 17:36:38 GMT
+  recorded_at: Mon, 06 Jun 2016 13:03:18 GMT
+recorded_with: VCR 3.0.1

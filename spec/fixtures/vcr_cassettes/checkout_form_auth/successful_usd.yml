@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-api.iyzipay.com/payment/iyzipos/checkoutform/auth/ecom/detail
+    body:
+      encoding: UTF-8
+      string: '{"locale":"tr","conversationId":"123456","token":"314b498a-89d1-4550-9cbe-5f7be828a49c","currency":"USD"}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Authorization:
+      - IYZWS sandbox-lYXmlBGjvZawww9mhoj7Mef89uZ1bybo:O9NxW6+bFizvQ58ndRL+6jValrk=
+      X-Iyzi-Rnd:
+      - random_string
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - POST, OPTIONS
+      Access-Control-Max-Age:
+      - '3600'
+      Access-Control-Allow-Headers:
+      - x-requested-with,Content-Type,Accept,X-IYZI-TOKEN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      X-Application-Context:
+      - iyzipay-payment-api:sandbox:8080
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Mon, 06 Jun 2016 13:23:50 GMT
+    body:
+      encoding: UTF-8
+      string: '{"status":"success","locale":"tr","systemTime":1465219430242,"conversationId":"123456","price":3.00000000,"paidPrice":3.00000000,"installment":1,"paymentId":"1394","fraudStatus":1,"merchantCommissionRate":0E-8,"merchantCommissionRateAmount":0E-8,"iyziCommissionRateAmount":0.08850000,"iyziCommissionFee":0.08288850,"binNumber":"552879","currency":"USD","itemTransactions":[{"itemId":"3","paymentTransactionId":"1560","transactionStatus":2,"price":3.00000000,"paidPrice":3.00000000,"merchantCommissionRate":0E-8,"merchantCommissionRateAmount":0E-8,"iyziCommissionRateAmount":0.08850000,"iyziCommissionFee":0.08288850,"blockageRate":10.00000000,"blockageRateAmountMerchant":0.30000000,"blockageRateAmountSubMerchant":0E-8,"blockageResolvedDate":"2016-06-13
+        16:22:21","subMerchantPrice":0E-8,"subMerchantPayoutRate":0E-8,"subMerchantPayoutAmount":0E-8,"merchantPayoutAmount":2.52861150,"convertedPayout":{"paidPrice":9.04830000,"iyziCommissionRateAmount":0.26692485,"iyziCommissionFee":0.25000000,"blockageRateAmountMerchant":0.90483000,"blockageRateAmountSubMerchant":0E-8,"subMerchantPayoutAmount":0E-8,"merchantPayoutAmount":7.62654515,"iyziConversionRate":0E-8,"iyziConversionRateAmount":0E-8,"currency":"TRY"}}],"token":"314b498a-89d1-4550-9cbe-5f7be828a49c","callbackUrl":"https://c2eb2d7a.ngrok.io","paymentStatus":"SUCCESS"}'
+    http_version: 
+  recorded_at: Mon, 06 Jun 2016 13:23:50 GMT
+recorded_with: VCR 3.0.1

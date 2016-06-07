@@ -13,6 +13,7 @@ module Iyzi
         basketItems
         callbackUrl
         paymentSource
+        currency
         posOrderId
         paidPrice
         forceThreeDS

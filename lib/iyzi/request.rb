@@ -8,31 +8,31 @@ module Iyzi
     AUTHORIZATION_HEADER_STRING = 'IYZWS %s:%s'.freeze
     DEFAULT_LOCALE              = 'tr'.freeze
 
-    attr_accessor :config, :method, :path, :conversation_id, :locale, :random_string, :pki, :options
+    attr_accessor :config, :method, :path, :random_string, :pki, :options
 
     def initialize(method, path, options = {})
       @method = method
       @path   = path
       # use default config which comes from initial setup
       # you can also send custom config object which you'd like to use
-      @config          = options.delete(:config) || Iyzi.configuration
-      @options         = options
-      @locale          = options[:locale] || DEFAULT_LOCALE
-      @conversation_id = options[:conversation_id]
-      @pki             = to_pki
-      @random_string   = secure_random_string
+      @config             = options.delete(:config) || Iyzi.configuration
+      @options            = options
+      @options[:locale]   = options[:locale] || DEFAULT_LOCALE
+      @options[:currency] = Currency.find(options[:currency]) if options[:currency].present?
+      @pki                = to_pki
+      @random_string      = secure_random_string
       # config must have all required params
       config.validate if has_pki?
     end
 
     def iyzi_options
-      Utils.hash_to_properties(options)
+      Utils.hash_to_properties(options.compact)
     end
 
     def connection
       @conn ||= Faraday.new(url: config.base_url) do |faraday|
         faraday.request  :json
-        faraday.response :logger                  # log requests to STDOUT
+        faraday.response :logger if ENV['DEBUG']
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
         faraday.response :json, content_type: /\bjson$/
       end

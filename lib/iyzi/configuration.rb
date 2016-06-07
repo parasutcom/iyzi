@@ -1,7 +1,7 @@
 module Iyzi
   class Configuration
     BASE_URL        = 'https://api.iyzipay.com/'.freeze
-    REQUIRED_CONFIG = %i(base_url api_key secret)
+    REQUIRED_CONFIG = %i(base_url api_key secret).freeze
     attr_accessor :base_url, :api_key, :secret
 
     def initialize(options = {})

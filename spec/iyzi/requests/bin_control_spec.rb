@@ -1,11 +1,14 @@
 require 'spec_helper'
 
 describe Iyzi::Requests::BinControl do
-  let(:config) { Iyzi::Configuration.new(api_key: 'x', secret: 'x') }
+  let(:config) { Iyzi::Configuration.new(api_key:  ENV['IYZI_SANDBOX_API_KEY'],
+                                         secret:   ENV['IYZI_SANDBOX_SECRET'],
+                                         base_url: ENV['IYZI_SANDBOX_BASE_URL']) }
+
   before { stub_random_string }
 
   context 'succesful' do
-    cassette 'bin_control_successful'
+    cassette 'bin_control/successful'
     let(:bin_number)  { '557023' }
     let(:bin_control) { described_class.new(bin_number: bin_number, config: config) }
 
@@ -22,7 +25,7 @@ describe Iyzi::Requests::BinControl do
   end
 
   context 'failure' do
-    cassette 'bin_control_failure'
+    cassette 'bin_control/failure'
     let(:bin_number)  { '411111' }
     let(:bin_control) { described_class.new(bin_number: bin_number, config: config) }
 

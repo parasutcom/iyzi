@@ -4,6 +4,7 @@ require 'iyzi/resources'
 require 'iyzi/endpoints'
 require 'iyzi/api_error'
 require 'iyzi/utils'
+require 'iyzi/currency'
 
 # PKI Builders
 require 'iyzi/pki_builder'

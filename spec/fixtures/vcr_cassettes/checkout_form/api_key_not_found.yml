@@ -32,6 +32,16 @@ http_interactions:
     headers:
       Server:
       - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
       X-Application-Context:
       - iyzipay-payment-api:prod:8080
       Content-Type:
@@ -39,14 +49,14 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Thu, 14 Apr 2016 08:50:51 GMT
+      - Mon, 06 Jun 2016 13:00:58 GMT
     body:
       encoding: ASCII-8BIT
       string: !binary |-
         eyJzdGF0dXMiOiJmYWlsdXJlIiwiZXJyb3JDb2RlIjoiMTAwMSIsImVycm9y
         TWVzc2FnZSI6ImFwaSBiaWxnaWxlcmkgYnVsdW5hbWFkxLEiLCJsb2NhbGUi
-        OiJ0ciIsInN5c3RlbVRpbWUiOjE0NjA1ODkxNzY4MTUsImNvbnZlcnNhdGlv
+        OiJ0ciIsInN5c3RlbVRpbWUiOjE0NjUyMTgwNTg4MjAsImNvbnZlcnNhdGlv
         bklkIjoiMTIzNDU2In0=
     http_version: 
-  recorded_at: Thu, 14 Apr 2016 08:50:51 GMT
+  recorded_at: Mon, 06 Jun 2016 13:00:58 GMT
 recorded_with: VCR 3.0.1

@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe Iyzi::Requests::CardStorage do
   before { stub_random_string }
-  let(:config) { Iyzi::Configuration.new(api_key: 'x', secret: 'x') }
+  let(:config) { Iyzi::Configuration.new(api_key:  ENV['IYZI_SANDBOX_API_KEY'],
+                                         secret:   ENV['IYZI_SANDBOX_SECRET'],
+                                         base_url: ENV['IYZI_SANDBOX_BASE_URL']) }
 
   context '#add' do
     let(:params) do
@@ -22,7 +24,7 @@ describe Iyzi::Requests::CardStorage do
     end
 
     context 'successful response' do
-      cassette 'card_storage_add_successful'
+      cassette 'card_storage/add_successful'
       let(:card_request) { described_class.add(params.merge(config: config)) }
 
       it 'stores credit card number' do
@@ -46,7 +48,7 @@ describe Iyzi::Requests::CardStorage do
 
     context 'failed response' do
       context 'missing card number' do
-        cassette 'card_storage_add_missing_card'
+        cassette 'card_storage/add_missing_card'
         let(:card_request) { described_class.add(email: 'john@doe.com', config: config)}
 
         it 'returns fail' do
@@ -59,7 +61,7 @@ describe Iyzi::Requests::CardStorage do
       end
 
       context 'wrong card number' do
-        cassette 'card_storage_add_wrong_card'
+        cassette 'card_storage/add_wrong_card'
         let(:params) do
           {
             email: 'john@doe.com',
@@ -89,7 +91,7 @@ describe Iyzi::Requests::CardStorage do
     let(:delete_request) { described_class.delete(params.merge(config: config)) }
 
     context 'successful response' do
-      cassette 'card_storage_delete_successful'
+      cassette 'card_storage/delete_successful'
 
       it 'deletes stored card' do
         expect(delete_request.response['status']).to eq('success')
@@ -97,7 +99,7 @@ describe Iyzi::Requests::CardStorage do
     end
 
     context 'failed response' do
-      cassette 'card_storage_delete_card_not_found'
+      cassette 'card_storage/delete_card_not_found'
       let(:delete_request) { described_class.delete(params.merge(config: config)) }
 
       it 'returns fail' do
@@ -111,7 +113,7 @@ describe Iyzi::Requests::CardStorage do
 
   context 'list' do
     context 'successful' do
-      cassette 'card_storage_list_successful'
+      cassette 'card_storage/list_successful'
       let(:params) { { card_user_key: '74mARIxf2Z31VnJsdd/AeTgYyAY=' } }
       let(:list_request) { described_class.list(params.merge(config: config)) }
 
@@ -132,7 +134,7 @@ describe Iyzi::Requests::CardStorage do
     end
 
     context 'failure' do
-      cassette 'card_storage_list_user_not_found'
+      cassette 'card_storage/list_user_not_found'
       let(:params) { { card_user_key: 'XXXX' } }
       let(:list_request) { described_class.list(params.merge(config: config)) }
 

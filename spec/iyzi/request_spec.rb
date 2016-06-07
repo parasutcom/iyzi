@@ -9,8 +9,6 @@ describe Iyzi::Request do
       request = described_class.new('post', '/path/to/request', locale: 'en', conversation_id: '123')
       expect(request.method).to eq('post')
       expect(request.path).to eq('/path/to/request')
-      expect(request.locale).to eq('en')
-      expect(request.conversation_id).to eq('123')
     end
   end
 

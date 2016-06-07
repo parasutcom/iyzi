@@ -5,7 +5,7 @@ describe Iyzi::Requests::PaymentAuth do
   let(:config) { Iyzi::Configuration.new(api_key: 'x', secret: 'x') }
 
   context 'successful response' do
-    cassette 'payment_auth_successful'
+    cassette 'payment_auth/successful'
     let(:payment_card) { { card_token: 'TggW8eg3fDucmCxSkPqAloBsoVA=', card_user_key: 'hd5F9J+IE6BxZCoT9rctolTE9EI=' } }
     let(:buyer) do
       {
@@ -77,7 +77,7 @@ describe Iyzi::Requests::PaymentAuth do
   end
 
   context 'failed response' do
-    cassette 'payment_auth_missing_fields'
+    cassette 'payment_auth/missing_fields'
     let(:params) { { price: 1, paid_price: 1} }
     let(:payment_request) { described_class.new(params.merge(config: config)) }
 

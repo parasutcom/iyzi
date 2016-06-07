@@ -51,7 +51,7 @@ Checked items are supported
 
 - [x] Yeni Alt Üye İşyeri Ekleme Servisi /onboarding/submerchant POST
 - [x] Alt Üye İşyeri Güncelleme Servisi /onboarding/submerchant PUT
-- [ ] Ödeme (Auth) Servisi /payment/iyzipos/auth/ecom POST
+- [x] Ödeme (Auth) Servisi /payment/iyzipos/auth/ecom POST
 - [ ] 3D Secure Ödeme (initialize 3DS) Başlatma Servisi /payment/iyzipos/initialize3ds/ecom POST
 - [ ] 3D Secure Ödeme (Auth 3DS) Servisi /payment/iyzipos/auth3ds/ecom POST
 - [ ] Ön Otorizasyon (PreAuth) Servisi /payment/iyzipos/preauth/ecom POST
