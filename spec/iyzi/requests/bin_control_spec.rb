@@ -10,7 +10,8 @@ describe Iyzi::Requests::BinControl do
   context 'succesful' do
     cassette 'bin_control/successful'
     let(:bin_number)  { '557023' }
-    let(:bin_control) { described_class.new(bin_number: bin_number, config: config) }
+    let(:bin_control) { described_class.new(bin_number: bin_number, 
+                                            config:     config) }
 
     it 'gets bin number details' do
       response = bin_control.response

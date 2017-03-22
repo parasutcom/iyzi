@@ -20,6 +20,7 @@ require 'iyzi/pki_builders/payment_card'
 require 'iyzi/pki_builders/store_card'
 require 'iyzi/pki_builders/payment_auth'
 require 'iyzi/pki_builders/bin_control'
+require 'iyzi/pki_builders/installment_info'
 
 # Requests
 require 'iyzi/request'
@@ -30,6 +31,7 @@ require 'iyzi/requests/sub_merchant'
 require 'iyzi/requests/card_storage'
 require 'iyzi/requests/payment_auth'
 require 'iyzi/requests/bin_control'
+require 'iyzi/requests/installment_info'
 
 # Misc
 require 'active_support/all'

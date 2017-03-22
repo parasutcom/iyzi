@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-api.iyzipay.com/payment/iyzipos/installment
+    body:
+      encoding: UTF-8
+      string: '{"locale":"tr","conversationId":"123456","binNumber":"552608","price":100}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Authorization:
+      - IYZWS sandbox-lYXmlBGjvZawww9mhoj7Mef89uZ1bybo:elZee4L3EdsfBXn8HmgCwO1DdFQ=
+      X-Iyzi-Rnd:
+      - random_string
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      X-Application-Context:
+      - iyzipay-payment-api:sandbox:8080
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 22 Mar 2017 14:25:38 GMT
+    body:
+      encoding: UTF-8
+      string: '{"status":"success","locale":"tr","systemTime":1490192738765,"conversationId":"123456","installmentDetails":[{"binNumber":"552608","price":100,"cardType":"CREDIT_CARD","cardAssociation":"MASTER_CARD","cardFamilyName":"Axess","force3ds":0,"bankCode":46,"bankName":"Akbank","forceCvc":0,"installmentPrices":[{"installmentPrice":100,"totalPrice":100,"installmentNumber":1},{"installmentPrice":51.09,"totalPrice":102.17,"installmentNumber":2},{"installmentPrice":34.46,"totalPrice":103.39,"installmentNumber":3},{"installmentPrice":17.81,"totalPrice":106.89,"installmentNumber":6},{"installmentPrice":12.32,"totalPrice":110.92,"installmentNumber":9}]}]}'
+    http_version: 
+  recorded_at: Wed, 22 Mar 2017 14:25:38 GMT
+recorded_with: VCR 3.0.3
