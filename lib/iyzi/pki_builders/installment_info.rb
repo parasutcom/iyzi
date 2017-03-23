@@ -6,10 +6,10 @@ module Iyzi
         conversationId
         binNumber
         price
-      }
+      }.freeze
 
       TYPE_CAST = {
-        price: 'add_price',
+        price: 'add_price'
       }.freeze
 
       def initialize(values = {})

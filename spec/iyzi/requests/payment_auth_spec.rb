@@ -6,8 +6,14 @@ describe Iyzi::Requests::PaymentAuth do
 
   context 'successful response' do
     cassette 'payment_auth/successful'
-    let(:payment_card) { { card_token: 'TggW8eg3fDucmCxSkPqAloBsoVA=', 
-                           card_user_key: 'hd5F9J+IE6BxZCoT9rctolTE9EI=' } }
+
+    let(:payment_card) do
+      {
+        card_token: 'TggW8eg3fDucmCxSkPqAloBsoVA=',
+        card_user_key: 'hd5F9J+IE6BxZCoT9rctolTE9EI='
+      }
+    end
+
     let(:buyer) do
       {
         id: 'BY789',
@@ -83,7 +89,7 @@ describe Iyzi::Requests::PaymentAuth do
 
   context 'failed response' do
     cassette 'payment_auth/missing_fields'
-    let(:params) { { price: 1, paid_price: 1} }
+    let(:params) { { price: 1, paid_price: 1 } }
     let(:payment_request) { described_class.new(params.merge(config: config)) }
 
     it 'returns missing fields' do
