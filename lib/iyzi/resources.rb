@@ -31,5 +31,9 @@ module Iyzi
     def bin_control(options, &block)
       Requests::BinControl.new(options).response(&block)
     end
+
+    def installment_info(options, &block)
+      Requests::InstallmentInfo.new(options).response(&block)
+    end
   end
 end

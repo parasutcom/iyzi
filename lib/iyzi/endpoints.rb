@@ -2,6 +2,7 @@ module Iyzi
   module Endpoints
     API_TEST                 = '/payment/test'.freeze
     BIN_CONTROL              = '/payment/bin/check'.freeze
+    INSTALLMENT_INFO         = '/payment/iyzipos/installment'.freeze
     CHECKOUT_FORM_INITIALIZE = '/payment/iyzipos/checkoutform/initialize/ecom'.freeze
     CHECKOUT_FORM_AUTH       = '/payment/iyzipos/checkoutform/auth/ecom/detail'.freeze
     SUB_MERCHANT_CREATE      = '/onboarding/submerchant'.freeze

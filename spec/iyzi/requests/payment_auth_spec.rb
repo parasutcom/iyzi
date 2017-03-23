@@ -6,7 +6,14 @@ describe Iyzi::Requests::PaymentAuth do
 
   context 'successful response' do
     cassette 'payment_auth/successful'
-    let(:payment_card) { { card_token: 'TggW8eg3fDucmCxSkPqAloBsoVA=', card_user_key: 'hd5F9J+IE6BxZCoT9rctolTE9EI=' } }
+
+    let(:payment_card) do
+      {
+        card_token: 'TggW8eg3fDucmCxSkPqAloBsoVA=',
+        card_user_key: 'hd5F9J+IE6BxZCoT9rctolTE9EI='
+      }
+    end
+
     let(:buyer) do
       {
         id: 'BY789',
@@ -20,6 +27,7 @@ describe Iyzi::Requests::PaymentAuth do
         ip: 'localhost'
       }
     end
+
     let(:address) do
       {
         address: 'Tomtom Mah. Nur-i Ziya Sok. 16/1 34433 Beyoğlu',
@@ -28,6 +36,7 @@ describe Iyzi::Requests::PaymentAuth do
         country: 'Turkey'
       }
     end
+
     let(:item) do
       {
         id: 'PARASUT:1',
@@ -38,6 +47,7 @@ describe Iyzi::Requests::PaymentAuth do
         price: '1'
       }
     end
+
     let(:params) do
       {
         locale: 'tr',
@@ -52,6 +62,7 @@ describe Iyzi::Requests::PaymentAuth do
         basket_items: [item]
       }
     end
+
     let(:payment_request) { described_class.new(params.merge(config: config)) }
 
     it 'collects payment' do
@@ -78,7 +89,7 @@ describe Iyzi::Requests::PaymentAuth do
 
   context 'failed response' do
     cassette 'payment_auth/missing_fields'
-    let(:params) { { price: 1, paid_price: 1} }
+    let(:params) { { price: 1, paid_price: 1 } }
     let(:payment_request) { described_class.new(params.merge(config: config)) }
 
     it 'returns missing fields' do
