@@ -284,3 +284,52 @@ Iyzi.bin_control(params)
 #           "bank_code" => 62
 #}
 ```
+
+### Installment Info
+```ruby
+params = {
+  locale: 'tr',
+  conversation_id: '123456',
+  binNumber: '552608',
+  price: 100
+}
+Iyzi.installment_info(params)
+#=> {
+#            "bin_number" => "552608",
+#                 "price" => 100,
+#             "card_type" => "CREDIT_CARD",
+#      "card_association" => "MASTER_CARD",
+#      "card_family_name" => "Axess",
+#              "force3ds" => 0,
+#             "bank_code" => 46,
+#             "bank_name" => "Akbank",
+#             "force_cvc" => 0,
+#    "installment_prices" => [
+#        [0] {
+#             "installment_price" => 100,
+#                   "total_price" => 100,
+#            "installment_number" => 1
+#        },
+#        [1] {
+#             "installment_price" => 51.09,
+#                   "total_price" => 102.17,
+#            "installment_number" => 2
+#        },
+#        [2] {
+#             "installment_price" => 34.46,
+#                   "total_price" => 103.39,
+#            "installment_number" => 3
+#        },
+#        [3] {
+#             "installment_price" => 17.81,
+#                   "total_price" => 106.89,
+#            "installment_number" => 6
+#        },
+#        [4] {
+#             "installment_price" => 12.32,
+#                   "total_price" => 110.92,
+#            "installment_number" => 9
+#        }
+#    ]
+# }
+  ```
