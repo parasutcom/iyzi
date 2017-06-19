@@ -17,6 +17,10 @@ module Iyzi
     # PAYMENT AUTH
     PAYMENT_AUTH_CREATE      = '/payment/iyzipos/auth/ecom'.freeze
 
+    # 3DS
+    THREEDS_INITIALIZE       = '/payment/iyzipos/initialize3ds/ecom'.freeze
+    THREEDS_PAYMENT_CREATE   = '/payment/iyzipos/auth3ds/ecom'.freeze
+
     # HTTP VERBS
     HTTP_POST    = 'post'.freeze
     HTTP_GET     = 'get'.freeze

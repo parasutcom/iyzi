@@ -19,6 +19,12 @@ module Iyzi
       @options            = options
       @options[:locale]   = options[:locale] || DEFAULT_LOCALE
       @options[:currency] = Currency.find(options[:currency]) if options[:currency].present?
+
+      # In #add method of `PkiBuilder`, we ignore empty strings
+      # So, in order to get valid signature, we need to make sure that
+      # there is no empty value in request body
+      @options.delete_if { |key, value| value.is_a?(String) && value.empty? }
+
       @pki                = to_pki
       @random_string      = secure_random_string
       # config must have all required params

@@ -52,8 +52,8 @@ Checked items are supported
 - [x] Yeni Alt Üye İşyeri Ekleme Servisi /onboarding/submerchant POST
 - [x] Alt Üye İşyeri Güncelleme Servisi /onboarding/submerchant PUT
 - [x] Ödeme (Auth) Servisi /payment/iyzipos/auth/ecom POST
-- [ ] 3D Secure Ödeme (initialize 3DS) Başlatma Servisi /payment/iyzipos/initialize3ds/ecom POST
-- [ ] 3D Secure Ödeme (Auth 3DS) Servisi /payment/iyzipos/auth3ds/ecom POST
+- [x] 3D Secure Ödeme (initialize 3DS) Başlatma Servisi /payment/iyzipos/initialize3ds/ecom POST
+- [x] 3D Secure Ödeme (Auth 3DS) Servisi /payment/iyzipos/auth3ds/ecom POST
 - [ ] Ön Otorizasyon (PreAuth) Servisi /payment/iyzipos/preauth/ecom POST
 - [ ] Son Otorizasyon (PostAuth=Capture) Servisi /payment/iyzipos/postauth POST
 - [ ] İptal (Cancel) Servisi /payment/iyzipos/cancel POST
@@ -65,7 +65,7 @@ Checked items are supported
 - [ ] Mahsuplaşma - Alt Üye İşyerinden Para Alma Servisi /crossbooking/receive POST
 - [x] Servis Ayakta mı Testi (Healthcheck) /payment/test GET
 - [x] BIN Kontrol Servisi /payment/bin/check POST
-- [ ] Taksit Matrisi (Installment) Servisi /payment/iyzipos/installment POST
+- [x] Taksit Matrisi (Installment) Servisi /payment/iyzipos/installment POST
 - [x] Ödemeden Bağımsız Kart Ekleme Servisi /cardstorage/card POST
 - [x] Ödemeden Bağımsız Kart Silme Servisi /cardstorage/card DELETE
 - [x] Ödemeden Bağımsız Kart Bilgilerini Çekme Servisi /cardstorage/cards POST

@@ -35,5 +35,13 @@ module Iyzi
     def installment_info(options, &block)
       Requests::InstallmentInfo.new(options).response(&block)
     end
+
+    def threeds_initialize(options, &block)
+      Requests::ThreedsInitialize.new(options).response(&block)
+    end
+
+    def threeds_payment_create(options, &block)
+      Requests::ThreedsPaymentCreate.new(options).response(&block)
+    end
   end
 end
