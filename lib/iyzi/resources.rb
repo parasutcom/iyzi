@@ -43,5 +43,9 @@ module Iyzi
     def threeds_payment_create(options, &block)
       Requests::ThreedsPaymentCreate.new(options).response(&block)
     end
+
+    def instant_onboarding(options, &block)
+      Requests::InstantOnboarding.new(options).response(&block)
+    end
   end
 end

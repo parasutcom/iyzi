@@ -16,6 +16,7 @@ module Iyzi
       # use default config which comes from initial setup
       # you can also send custom config object which you'd like to use
       @config             = options.delete(:config) || Iyzi.configuration
+      @headers            = options.delete(:headers) || {}
       @options            = options
       @options[:locale]   = options[:locale] || DEFAULT_LOCALE
       @options[:currency] = Currency.find(options[:currency]) if options[:currency].present?
@@ -50,6 +51,7 @@ module Iyzi
         req.headers['Accept'] = 'application/json'
         req.headers['Content-Type'] = 'application/json'
         req.headers.merge!(auth_headers) if has_pki?
+        req.headers.merge!(@headers)
         req.body = iyzi_options
       end
     end

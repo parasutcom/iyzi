@@ -36,6 +36,7 @@ require 'iyzi/requests/bin_control'
 require 'iyzi/requests/installment_info'
 require 'iyzi/requests/threeds_initialize'
 require 'iyzi/requests/threeds_payment_create'
+require 'iyzi/requests/instant_onboarding'
 
 # Misc
 require 'active_support/all'

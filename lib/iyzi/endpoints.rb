@@ -21,6 +21,9 @@ module Iyzi
     THREEDS_INITIALIZE       = '/payment/iyzipos/initialize3ds/ecom'.freeze
     THREEDS_PAYMENT_CREATE   = '/payment/iyzipos/auth3ds/ecom'.freeze
 
+    # INSTANT ONBOARDING
+    INSTANT_ONBOARDING_CREATE = '/api/v1/merchants'.freeze
+
     # HTTP VERBS
     HTTP_POST    = 'post'.freeze
     HTTP_GET     = 'get'.freeze

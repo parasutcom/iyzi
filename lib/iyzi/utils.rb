@@ -32,6 +32,14 @@ module Iyzi
           v
         end
       end
+
+      def decrypt_message(encrypted_text, key)
+        aes = OpenSSL::Cipher.new("AES-128-ECB")
+        aes.decrypt
+        aes.key = key
+        tempkey = Base64.decode64(encrypted_text)
+        aes.update(tempkey) + aes.final
+      end
     end
   end
 end
