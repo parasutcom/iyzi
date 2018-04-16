@@ -55,7 +55,7 @@ module Iyzi
     end
 
     def response
-      @response ||= Utils.properties_to_hash(call.body)
+      @response ||= Utils.properties_to_hash(call)
       block_given? ? yield(@response) : @response
     end
 

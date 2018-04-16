@@ -7,9 +7,10 @@ module Iyzi
         newprops
       end
 
-      def properties_to_hash(props)
+      def properties_to_hash(response)
         hash = HashWithIndifferentAccess.new
-        props.each_pair { |k, v| hash[k.underscore] = convert_to_hash(v) }
+        response.body.each_pair { |k, v| hash[k.underscore] = convert_to_hash(v) }
+        hash['http_response'] = response
         hash
       end
 
