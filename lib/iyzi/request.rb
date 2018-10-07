@@ -39,8 +39,8 @@ module Iyzi
       @conn ||= Faraday.new(url: config.base_url) do |faraday|
         faraday.request  :json
         faraday.response :logger if ENV['DEBUG']
-        faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
         faraday.response :json, content_type: /\bjson$/
+        faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
       end
     end
 
