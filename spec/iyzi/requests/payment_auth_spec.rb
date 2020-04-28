@@ -85,6 +85,58 @@ describe Iyzi::Requests::PaymentAuth do
       expect(tx['price'].to_s).to eq(item[:price])
       expect(tx['paid_price'].to_i.to_s).to eq(item[:price])
     end
+
+    context 'currency is TRY' do
+      let(:payment_card) do
+        {
+          card_number: '5890040000000016',
+          expire_year: '2030',
+          expire_month: '12',
+          cvc: '000',
+          card_holder_name: 'John Doe'
+        }
+      end
+
+      let(:config) { Iyzi::Configuration.new(api_key: 'x', secret: 'x', base_url: 'https://sandbox-api.iyzipay.com/') }
+      let(:payment_request) { described_class.new(params.merge(config: config, currency: 'TRY')) }
+      cassette 'payment_auth/successful_try'
+
+      it 'returns success' do
+        response = payment_request.response
+        expect(response['status']).to eq('success')
+        expect(response['currency']).to eq('TRY')
+        tx = response['item_transactions'][0]
+        # converted payout will be TRY
+        expect(tx['converted_payout']['currency']).to eq('TRY')
+      end
+    end
+
+    context 'currency is EUR' do
+      # payment card must be foreign card for foreign currency charge
+      # checkout https://dev.iyzipay.com/tr/sss/yerli-kartlarla-doviz-oedemesi-neden-yapilamaz
+      let(:payment_card) do
+        {
+          card_number: '5400010000000004',
+          expire_year: '2030',
+          expire_month: '12',
+          cvc: '000',
+          card_holder_name: 'John Doe'
+        }
+      end
+
+      let(:config) { Iyzi::Configuration.new(api_key: 'x', secret: 'x', base_url: 'https://sandbox-api.iyzipay.com/') }
+      let(:payment_request) { described_class.new(params.merge(config: config, currency: 'EUR')) }
+      cassette 'payment_auth/successful_eur'
+
+      it 'returns success' do
+        response = payment_request.response
+        expect(response['status']).to eq('success')
+        expect(response['currency']).to eq('EUR')
+        tx = response['item_transactions'][0]
+        # converted payout will be TRY
+        expect(tx['converted_payout']['currency']).to eq('TRY')
+      end
+    end
   end
 
   context 'failed response' do
