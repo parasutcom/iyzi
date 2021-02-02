@@ -16,6 +16,7 @@ module Iyzi
         billingAddress
         basketItems
         paymentSource
+        currency
       }.freeze
 
       TYPE_CAST = {

@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-api.iyzipay.com/payment/iyzipos/auth/ecom
+    body:
+      encoding: UTF-8
+      string: '{"locale":"tr","conversationId":"123456","price":1,"paidPrice":1,"basketId":"TEST_BASKET_ID","paymentGroup":"SUBSCRIPTION","paymentCard":{"cardNumber":"5890040000000016","expireYear":"2030","expireMonth":"12","cvc":"000","cardHolderName":"John
+        Doe"},"buyer":{"id":"BY789","name":"Genc","surname":"Osman","identityNumber":"1000001","email":"genc@osman.com","registrationAddress":"Tomtom
+        Mah. Nur-i Ziya Sok. 16/1 34433 Beyoğlu","city":"Istanbul","country":"Turkey","ip":"localhost"},"billingAddress":{"address":"Tomtom
+        Mah. Nur-i Ziya Sok. 16/1 34433 Beyoğlu","contactName":"Genc Osman","city":"Istanbul","country":"Turkey"},"basketItems":[{"id":"PARASUT:1","name":"Test
+        Subscription","category1":"Finance","category2":"Online","itemType":"VIRTUAL","price":"1"}],"currency":"TRY"}'
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Authorization:
+      - IYZWS x:2wBnWVmu0ADTz9a3i9Ang2aVPko=
+      X-Iyzi-Rnd:
+      - random_string
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Strict-Transport-Security:
+      - '"max-age=157680000"'
+      - max-age=31536000 ; includeSubDomains
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 28 Apr 2020 03:11:36 GMT
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Security-Policy:
+      - 'default-src *; img-src * data: ''self''; script-src * ''self'' ''unsafe-eval''
+        ''unsafe-inline''; style-src * ''self'' ''unsafe-inline'''
+      Public-Key-Pins:
+      - pin-sha256="GUEngXfv2sZiDMgOCmP7lUu/qIoOWzNqgpChU5Mq554="; pin-sha256="1HA/W2JKpx0012SrpLPYJyoN3vrdSGV8r4eUD1K22Cc=";
+        pin-sha256="9pfml4d3n7mXEa4UXu0k6jTHoVVPYLwsVWJbY1kn7kM="; max-age=1; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: '{"status":"success","locale":"tr","systemTime":1588043496432,"conversationId":"123456","price":1,"paidPrice":1,"installment":1,"paymentId":"12058055","fraudStatus":1,"merchantCommissionRate":0E-8,"merchantCommissionRateAmount":0,"iyziCommissionRateAmount":0.02625000,"iyziCommissionFee":0.22245763,"cardType":"DEBIT_CARD","cardAssociation":"MASTER_CARD","cardFamily":"Neo","binNumber":"589004","lastFourDigits":"0016","basketId":"TEST_BASKET_ID","currency":"TRY","itemTransactions":[{"itemId":"PARASUT:1","paymentTransactionId":"12749684","transactionStatus":2,"price":1,"paidPrice":1.00000000,"merchantCommissionRate":0E-8,"merchantCommissionRateAmount":0E-8,"iyziCommissionRateAmount":0.02625000,"iyziCommissionFee":0.22245763,"blockageRate":10.00000000,"blockageRateAmountMerchant":0.10000000,"blockageRateAmountSubMerchant":0,"blockageResolvedDate":"2020-05-05
+        06:11:36","subMerchantPrice":0,"subMerchantPayoutRate":0E-8,"subMerchantPayoutAmount":0,"merchantPayoutAmount":0.65129237,"convertedPayout":{"paidPrice":1.00000000,"iyziCommissionRateAmount":0.02625000,"iyziCommissionFee":0.22245763,"blockageRateAmountMerchant":0.10000000,"blockageRateAmountSubMerchant":0E-8,"subMerchantPayoutAmount":0E-8,"merchantPayoutAmount":0.65129237,"iyziConversionRate":0,"iyziConversionRateAmount":0,"currency":"TRY"}}],"authCode":"671363","phase":"AUTH","hostReference":"mock00027iyzihostrfn"}'
+    http_version: 
+  recorded_at: Tue, 28 Apr 2020 03:11:36 GMT
+recorded_with: VCR 3.0.3

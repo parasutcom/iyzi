@@ -8,7 +8,7 @@ http_interactions:
       string: '{"locale":"tr","conversationId":"123456","token":"314b498a-89d1-4550-9cbe-5f7be828a49c","currency":"USD"}'
     headers:
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v1.0.1
       Accept:
       - application/json
       Content-Type:
