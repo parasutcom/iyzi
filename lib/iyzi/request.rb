@@ -67,11 +67,11 @@ module Iyzi
     end
 
     def auth_header_string
-      base64_string = Base64.strict_encode64("apiKey:#{config.api_key}&randomKey:#{random_string}&signature:#{request_hash_digest}")
+      base64_string = Base64.strict_encode64("apiKey:#{config.api_key}&randomKey:#{random_string}&signature:#{encrypted_data}")
       format(AUTHORIZATION_HEADER_STRING, base64_string)
     end
 
-    def request_hash_digest
+    def encrypted_data
       OpenSSL::HMAC.hexdigest('SHA256', config.secret, data_to_encrypt)
     end
 
