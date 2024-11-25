@@ -5,7 +5,7 @@ module Iyzi
   class Request
     AUTHORIZATION_HEADER_NAME   = 'Authorization'.freeze
     RANDOM_HEADER_NAME          = 'x-iyzi-rnd'.freeze
-    AUTHORIZATION_HEADER_STRING = 'IYZWS %s:%s'.freeze
+    AUTHORIZATION_HEADER_STRING = 'IYZWSv2 %s'.freeze
     DEFAULT_LOCALE              = 'tr'.freeze
 
     attr_accessor :config, :method, :path, :random_string, :pki, :options
@@ -67,15 +67,16 @@ module Iyzi
     end
 
     def auth_header_string
-      format(AUTHORIZATION_HEADER_STRING, config.api_key, request_hash_digest)
+      base64_string = Base64.strict_encode64("apiKey:#{config.api_key}&randomKey:#{random_string}&signature:#{encrypted_data}")
+      format(AUTHORIZATION_HEADER_STRING, base64_string)
     end
 
-    def request_hash_digest
-      Digest::SHA1.base64digest(params_will_be_hashed)
+    def encrypted_data
+      OpenSSL::HMAC.hexdigest('SHA256', config.secret, data_to_encrypt)
     end
 
-    def params_will_be_hashed
-      config.api_key + random_string + config.secret + pki
+    def data_to_encrypt
+      random_string + path + iyzi_options.to_json
     end
 
     def secure_random_string
