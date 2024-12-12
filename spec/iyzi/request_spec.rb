@@ -117,4 +117,62 @@ describe Iyzi::Request do
       expect(request.secure_random_string).to eq('random123')
     end
   end
+
+  describe '#deep_clean_empty_strings' do
+    it 'removes empty string values from hash' do
+      hash = { a: '', b: 'value', c: 123 }
+      request.deep_clean_empty_strings(hash)
+      expect(hash).to eq({ b: 'value', c: 123 })
+    end
+
+    it 'removes empty strings from nested hash structures' do
+      hash = {
+        a: '',
+        b: { 
+          c: '',
+          d: 'value',
+          e: {
+            f: '',
+            g: 'nested_value'
+          }
+        }
+      }
+      request.deep_clean_empty_strings(hash)
+      expect(hash).to eq({
+        b: { 
+          d: 'value',
+          e: {
+            g: 'nested_value'
+          }
+        }
+      })
+    end
+
+    it 'removes empty hash structures' do
+      hash = {
+        a: '',
+        b: { c: '' },
+        d: 'value'
+      }
+      request.deep_clean_empty_strings(hash)
+      expect(hash).to eq({ d: 'value' })
+    end
+
+    it 'preserves non-string empty values' do
+      hash = {
+        a: '',
+        b: nil,
+        c: 0,
+        d: false,
+        e: []
+      }
+      request.deep_clean_empty_strings(hash)
+      expect(hash).to eq({
+        b: nil,
+        c: 0,
+        d: false,
+        e: []
+      })
+    end
+  end
 end

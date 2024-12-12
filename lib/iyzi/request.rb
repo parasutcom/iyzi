@@ -23,7 +23,7 @@ module Iyzi
       # In #add method of `PkiBuilder`, we ignore empty strings
       # So, in order to get valid signature, we need to make sure that
       # there is no empty value in request body
-      @options.delete_if { |key, value| value.is_a?(String) && value.empty? }
+      deep_clean_empty_strings(@options)
 
       @pki                = to_pki
       @random_string      = secure_random_string
@@ -90,6 +90,19 @@ module Iyzi
     # implement if needed
     def to_pki
       ''
+    end
+
+    def deep_clean_empty_strings(hash)
+      hash.delete_if do |key, value|
+        if value.is_a?(String) && value.empty?
+          true
+        elsif value.is_a?(Hash)
+          deep_clean_empty_strings(value)
+          value.empty?
+        else
+          false
+        end
+      end
     end
   end
 end
