@@ -128,7 +128,7 @@ describe Iyzi::Request do
     it 'removes empty strings from nested hash structures' do
       hash = {
         a: '',
-        b: { 
+        b: {
           c: '',
           d: 'value',
           e: {
@@ -139,7 +139,7 @@ describe Iyzi::Request do
       }
       request.deep_clean_empty_strings(hash)
       expect(hash).to eq({
-        b: { 
+        b: {
           d: 'value',
           e: {
             g: 'nested_value'
@@ -173,6 +173,51 @@ describe Iyzi::Request do
         d: false,
         e: []
       })
+    end
+  end
+
+  describe '#data_to_encrypt' do
+    let(:random_string) { 'random123' }
+
+    before do
+      allow(SecureRandom).to receive(:urlsafe_base64).and_return(random_string)
+    end
+
+    context 'with special characters' do
+      before do
+        allow(Iyzi::Utils).to receive(:hash_to_properties) do |hash|
+          hash.except(:locale)
+        end
+      end
+
+      after do
+        RSpec::Mocks.space.proxy_for(Iyzi::Utils).reset
+      end
+
+      it 'preserves & characters in the JSON output' do
+        special_options = {
+          description: 'Black & White T-shirt',
+          merchant_data: 'item&category&price'
+        }
+        request = described_class.new(:post, '/payment', special_options.merge(config: config))
+
+        expected_data = "#{random_string}/payment{\"description\":\"Black & White T-shirt\",\"merchant_data\":\"item&category&price\"}"
+        expect(request.data_to_encrypt).to eq(expected_data)
+      end
+
+      it 'handles multiple special characters correctly' do
+        special_options = {
+          items: [
+            { name: 'Salt & Pepper' },
+            { name: 'Bread & Butter' }
+          ],
+          notes: 'Special & Important'
+        }
+        request = described_class.new(:post, '/payment', special_options.merge(config: config))
+
+        expected_data = "#{random_string}/payment{\"items\":[{\"name\":\"Salt & Pepper\"},{\"name\":\"Bread & Butter\"}],\"notes\":\"Special & Important\"}"
+        expect(request.data_to_encrypt).to eq(expected_data)
+      end
     end
   end
 end
