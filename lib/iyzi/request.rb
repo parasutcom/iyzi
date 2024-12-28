@@ -76,7 +76,7 @@ module Iyzi
     end
 
     def data_to_encrypt
-      random_string + path + iyzi_options.to_json
+      random_string + path + JSON.generate(iyzi_options)
     end
 
     def secure_random_string
