@@ -1,7 +1,17 @@
 require 'spec_helper'
 
 describe Iyzi::Request do
-  let(:config) { instance_double('Iyzi::Configuration', base_url: 'https://api.iyzi.com', api_key: 'test_key', secret: 'test_secret', validate: true) }
+  let(:proxy_url) { nil }
+  let(:config) do
+    instance_double(
+      'Iyzi::Configuration',
+      base_url: 'https://api.iyzi.com',
+      api_key: 'test_key',
+      secret: 'test_secret',
+      proxy_url: proxy_url,
+      validate: true
+    )
+  end
   let(:path) { '/test-path' }
   let(:method) { :post }
   let(:options) { { locale: 'en', currency: 'TRY', custom_param: 'value' } }
@@ -61,6 +71,20 @@ describe Iyzi::Request do
       end)
 
       request.connection
+    end
+
+    context 'when proxy_url is provided' do
+      let(:proxy_url) { 'http://proxy.example:8080' }
+
+      it 'creates Faraday connection with proxy options' do
+        expect(Faraday).to receive(:new).with(url: config.base_url, proxy: proxy_url).and_yield(double('builder').tap do |builder|
+          allow(builder).to receive(:request)
+          allow(builder).to receive(:response)
+          allow(builder).to receive(:adapter)
+        end)
+
+        request.connection
+      end
     end
   end
 

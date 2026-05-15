@@ -36,11 +36,16 @@ module Iyzi
     end
 
     def connection
-      @conn ||= Faraday.new(url: config.base_url) do |faraday|
-        faraday.request  :json
-        faraday.response :logger if ENV['DEBUG']
-        faraday.response :json, content_type: /\bjson$/
-        faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+      @conn ||= begin
+        conn_options = { url: config.base_url }
+        conn_options[:proxy] = config.proxy_url if config.proxy_url.present?
+
+        Faraday.new(conn_options) do |faraday|
+          faraday.request  :json
+          faraday.response :logger if ENV['DEBUG']
+          faraday.response :json, content_type: /\bjson$/
+          faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+        end
       end
     end
 

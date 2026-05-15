@@ -33,11 +33,16 @@ Iyzi.configure do |config|
   config.api_key  = 'API_KEY'
   config.secret   = 'SECRET'
   config.base_url = 'BASE_API_URL' # default 'https://api.iyzipay.com/' if not specified
+  config.proxy_url = 'http://proxy-host:port' # optional
 end
 ```
 or you could send configuration object as a parameter
 ```ruby
-config = Iyzi::Configuration.new(api_key: 'API_KEY', secret: 'SECRET')
+config = Iyzi::Configuration.new(
+  api_key: 'API_KEY',
+  secret: 'SECRET',
+  proxy_url: 'http://proxy-host:port' # optional
+)
 params = { bin_number: '411111', config: config }
 Iyzi.bin_control(params)
 ```

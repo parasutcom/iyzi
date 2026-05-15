@@ -2,12 +2,13 @@ module Iyzi
   class Configuration
     BASE_URL        = 'https://api.iyzipay.com/'.freeze
     REQUIRED_CONFIG = %i(base_url api_key secret).freeze
-    attr_accessor :base_url, :api_key, :secret
+    attr_accessor :base_url, :api_key, :secret, :proxy_url
 
     def initialize(options = {})
       @base_url = options[:base_url] || BASE_URL
       @api_key  = options[:api_key]
       @secret   = options[:secret]
+      @proxy_url = options[:proxy_url]
     end
 
     def valid?
@@ -31,7 +32,8 @@ module Iyzi
       {
         base_url: base_url,
         api_key:  api_key,
-        secret:   secret
+        secret:   secret,
+        proxy_url: proxy_url
       }
     end
   end

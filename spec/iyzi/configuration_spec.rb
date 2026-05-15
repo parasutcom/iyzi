@@ -7,6 +7,11 @@ describe Iyzi::Configuration do
     expect(config.secret).to eq('456')
   end
 
+  it 'assigns proxy_url when provided' do
+    config = described_class.new(api_key: '123', secret: '456', proxy_url: 'http://proxy.example:8080')
+    expect(config.proxy_url).to eq('http://proxy.example:8080')
+  end
+
   context '#validate' do
     let(:config) { Iyzi::Configuration.new(api_key: 'api_key', secret: 'secret') }
     let(:not_valid) { Iyzi::Configuration.new }
