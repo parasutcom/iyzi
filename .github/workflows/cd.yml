@@ -1,0 +1,48 @@
+name: Publish Ruby Gem
+
+# Publishes to GitHub Packages on every push to master.
+# A version that is already published is skipped, so only a version bump produces a release.
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Build + Publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    env:
+      GEM_HOST: https://rubygems.pkg.github.com/${{ github.repository_owner }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - name: Check whether this version is already published
+        id: check
+        run: |
+          spec=$(ls *.gemspec)
+          name=$(ruby -e 'print Gem::Specification.load(ARGV[0]).name' "$spec")
+          version=$(ruby -e 'print Gem::Specification.load(ARGV[0]).version' "$spec")
+          echo "spec=$spec" >> "$GITHUB_OUTPUT"
+          echo "gem=$name-$version.gem" >> "$GITHUB_OUTPUT"
+          code=$(curl -s -o /dev/null -w '%{http_code}' -u "x-access-token:$TOKEN" "$GEM_HOST/gems/$name-$version.gem")
+          case "$code" in
+            200|302) echo "exists=true" >> "$GITHUB_OUTPUT"; echo "$name $version is already published, skipping." ;;
+            404) echo "exists=false" >> "$GITHUB_OUTPUT"; echo "Publishing $name $version." ;;
+            *) echo "::error::Unexpected HTTP $code while checking $name $version"; exit 1 ;;
+          esac
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push
+        if: steps.check.outputs.exists == 'false'
+        run: |
+          gem build "${{ steps.check.outputs.spec }}"
+          gem push --host "$GEM_HOST" "${{ steps.check.outputs.gem }}"
+        env:
+          GEM_HOST_API_KEY: Bearer ${{ secrets.GITHUB_TOKEN }}
