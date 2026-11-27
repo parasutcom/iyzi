@@ -83,9 +83,23 @@ Checked items are supported
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, see Release below.
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
+## Release
+
+This gem is published to GitHub Packages (`https://rubygems.pkg.github.com/parasutcom`). To release a new version:
+
+- bump the version in the gemspec (or the version file it reads)
+- update `Gemfile.lock` if it pins this gem
+- merge to `master`
+
+The "Publish Ruby Gem" workflow then builds the gem and pushes it. A version
+that is already published is skipped, so a merge without a version bump publishes nothing. The workflow can also
+be started by hand from the Actions tab.
+
+To use the gem, add `source: 'https://rubygems.pkg.github.com/parasutcom'` to its line in the Gemfile and give Bundler a token with `read:packages`
+(`bundle config set --global rubygems.pkg.github.com <github-user>:<token>`).
